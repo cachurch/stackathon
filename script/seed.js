@@ -11,14 +11,14 @@ async function seed() {
     User.create({
       firstName: 'Chelsea',
       lastName: 'Church',
-      email: 'chelsea@email.com', 
+      email: 'chelsea@email.com',
       password: '123',
       postalCode: 11206
     }),
     User.create({
       firstName: 'John',
       lastName: 'Wick',
-      email: 'john@email.com', 
+      email: 'john@email.com',
       password: '123',
       postalCode: 10003
     })
@@ -26,11 +26,31 @@ async function seed() {
 
   const patients = await Promise.all([
     Patient.create({
-      name: 'Don Church',
+      name: 'Jack Donaghy',
       age: 82,
       moodScale: 0,
-      medicalHistory: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-      notes: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+      medicalHistory:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+      notes:
+        'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+    }),
+    Patient.create({
+      name: 'Liz Lemon',
+      age: 75,
+      moodScale: 0,
+      medicalHistory:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+      notes:
+        'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+    }),
+    Patient.create({
+      name: 'Tracy Jordan',
+      age: 72,
+      moodScale: 0,
+      medicalHistory:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+      notes:
+        'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
     })
   ])
 
