@@ -13,7 +13,25 @@ const Patient = db.define('patients', {
       min: 0
     }
   },
-  moodScale: {
+  morningMoodScale: {
+    type: Sequelize.INTEGER,
+    allowNull: true,
+    defaultValue: 0,
+    validate: {
+      min: 0,
+      max: 5
+    }
+  },
+  afternoonMoodScale: {
+    type: Sequelize.INTEGER,
+    allowNull: true,
+    defaultValue: 0,
+    validate: {
+      min: 0,
+      max: 5
+    }
+  },
+  eveningMoodScale: {
     type: Sequelize.INTEGER,
     allowNull: true,
     defaultValue: 0,

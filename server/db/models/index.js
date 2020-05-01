@@ -14,7 +14,7 @@ User.hasOne(Patient)
 Patient.belongsTo(User)
 
 Treatment.belongsTo(Patient, {through: PatientBehavior})
-Patient.hasOne(Treatment, {through: PatientBehavior})
+Patient.belongsToMany(Treatment, {through: PatientBehavior})
 
 /**
  * We'll export all of our models here, so that any time a module needs a model,

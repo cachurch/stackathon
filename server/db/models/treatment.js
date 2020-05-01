@@ -11,11 +11,13 @@ const Treatment = db.define('treatment', {
   },
   medName: {
     type: Sequelize.STRING,
-    allowNull: true
+    allowNull: true,
+    defaultValue: ''
   },
   behavioralName: {
     type: Sequelize.STRING,
-    allowNull: true
+    allowNull: true,
+    defaultValue: ''
   },
   doseage: {
     type: Sequelize.INTEGER,

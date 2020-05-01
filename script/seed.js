@@ -1,7 +1,12 @@
 'use strict'
 
 const db = require('../server/db')
-const {User, Patient} = require('../server/db/models')
+const {
+  User,
+  Patient,
+  PatientBehavior,
+  Treatment
+} = require('../server/db/models')
 
 async function seed() {
   await db.sync({force: true})
@@ -28,7 +33,7 @@ async function seed() {
     Patient.create({
       name: 'Jack Donaghy',
       age: 82,
-      moodScale: 0,
+      moodScale: 1,
       medicalHistory:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
       notes:
@@ -37,7 +42,7 @@ async function seed() {
     Patient.create({
       name: 'Liz Lemon',
       age: 75,
-      moodScale: 0,
+      moodScale: 3,
       medicalHistory:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
       notes:
@@ -46,7 +51,7 @@ async function seed() {
     Patient.create({
       name: 'Tracy Jordan',
       age: 72,
-      moodScale: 0,
+      moodScale: 5,
       medicalHistory:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
       notes:
@@ -54,8 +59,39 @@ async function seed() {
     })
   ])
 
+  const treatments = await Promise.all([
+    Treatment.create({
+      treatmentType: 'Medication',
+      medName: 'donepezil',
+      behavioralName: '',
+      doseage: 25,
+      timeAdministered: 12,
+      notes: 'Patient had increased difficulty swallowing pill this AM.'
+    }),
+    Treatment.create({
+      treatmentType: 'Behavioral Therapy',
+      medName: '',
+      behavioralName: '20 Minutes of walking outside',
+      timeAdministered: 9,
+      notes: 'Was noticibly sharper after time exercising outside'
+    })
+  ])
+
+  const behaviors = await Promise.all([
+    PatientBehavior.create({
+      patientId: 1,
+      treatmentId: 2
+    }),
+    PatientBehavior.create({
+      patientId: 3,
+      treatmentId: 1
+    })
+  ])
+
   console.log(`seeded ${users.length} users`)
   console.log(`seeded ${patients.length} patients`)
+  console.log(`seeded ${behaviors.length} behaviors`)
+  console.log(`seeded ${treatments.length} treatments`)
   console.log(`seeded successfully`)
 }
 
