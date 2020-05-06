@@ -2,6 +2,7 @@ const User = require('./user')
 const Patient = require('./patient')
 const Treatment = require('./treatment')
 const PatientBehavior = require('./patientBehavior')
+const MoodScale = require('./moodScale')
 
 /**
  * If we had any associations to make, this would be a great place to put them!
@@ -12,6 +13,9 @@ const PatientBehavior = require('./patientBehavior')
 
 User.hasOne(Patient)
 Patient.belongsTo(User)
+
+Patient.hasOne(MoodScale)
+MoodScale.belongsTo(Patient)
 
 Treatment.belongsTo(Patient, {through: PatientBehavior})
 Patient.belongsToMany(Treatment, {through: PatientBehavior})
@@ -26,5 +30,6 @@ module.exports = {
   User,
   Patient,
   Treatment,
-  PatientBehavior
+  PatientBehavior,
+  MoodScale
 }

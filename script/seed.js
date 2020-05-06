@@ -5,7 +5,8 @@ const {
   User,
   Patient,
   PatientBehavior,
-  Treatment
+  Treatment,
+  MoodScale
 } = require('../server/db/models')
 
 async function seed() {
@@ -33,7 +34,6 @@ async function seed() {
     Patient.create({
       name: 'Jack Donaghy',
       age: 82,
-      moodScale: 1,
       medicalHistory:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
       notes:
@@ -42,7 +42,6 @@ async function seed() {
     Patient.create({
       name: 'Liz Lemon',
       age: 75,
-      moodScale: 3,
       medicalHistory:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
       notes:
@@ -51,7 +50,6 @@ async function seed() {
     Patient.create({
       name: 'Tracy Jordan',
       age: 72,
-      moodScale: 5,
       medicalHistory:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
       notes:
@@ -88,10 +86,92 @@ async function seed() {
     })
   ])
 
+  const moods = await Promise.all([
+    MoodScale.create({
+      mood: 1
+    }),
+    MoodScale.create({
+      mood: 5
+    }),
+    MoodScale.create({
+      mood: 3
+    }),
+    MoodScale.create({
+      mood: 2
+    }),
+    MoodScale.create({
+      mood: 1
+    }),
+    MoodScale.create({
+      mood: 5
+    }),
+    MoodScale.create({
+      mood: 3
+    }),
+    MoodScale.create({
+      mood: 2
+    }),
+    MoodScale.create({
+      mood: 2
+    }),
+    MoodScale.create({
+      mood: 5
+    }),
+    MoodScale.create({
+      mood: 2
+    }),
+    MoodScale.create({
+      mood: 2
+    }),
+    MoodScale.create({
+      mood: 1
+    }),
+    MoodScale.create({
+      mood: 5
+    }),
+    MoodScale.create({
+      mood: 1
+    }),
+    MoodScale.create({
+      mood: 1
+    }),
+    MoodScale.create({
+      mood: 5
+    }),
+    MoodScale.create({
+      mood: 5
+    }),
+    MoodScale.create({
+      mood: 1
+    }),
+    MoodScale.create({
+      mood: 5
+    }),
+    MoodScale.create({
+      mood: 1
+    }),
+    MoodScale.create({
+      mood: 2
+    }),
+    MoodScale.create({
+      mood: 3
+    }),
+    MoodScale.create({
+      mood: 3
+    }),
+    MoodScale.create({
+      mood: 1
+    }),
+    MoodScale.create({
+      mood: 2
+    })
+  ])
+
   console.log(`seeded ${users.length} users`)
   console.log(`seeded ${patients.length} patients`)
   console.log(`seeded ${behaviors.length} behaviors`)
   console.log(`seeded ${treatments.length} treatments`)
+  console.log(`seeded ${moods.length} moods`)
   console.log(`seeded successfully`)
 }
 
