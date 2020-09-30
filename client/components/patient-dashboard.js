@@ -24,11 +24,13 @@ export class PatientDashboard extends React.Component {
     return (
       <div id="singlePatient">
         {<h1>Patient Dashboard</h1>}
-        <img src={patient.imageUrl} height="150" width="" />
-        <h2>{patient.name}</h2>
-        <p>Age: {patient.age}</p>
-        <p>Medical History: {patient.medicalHistory}</p>
-        <p>Notes: {patient.notes}</p>
+        <div id="patientCard">
+          <img src={patient.imageUrl} height="200" width="" />
+          <h2>{patient.name}</h2>
+          <p>Age: {patient.age}</p>
+          <p>Medical History: {patient.medicalHistory}</p>
+          <p>Notes: {patient.notes}</p>
+        </div>
       </div>
     )
   }

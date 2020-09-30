@@ -28,3 +28,16 @@ router.post('/', async (req, res, next) => {
     next(err)
   }
 })
+
+router.put('/', async (req, res, next) => {
+  try {
+    const editedMood = await MoodScale.update(req.body, {
+      where: {
+        id: req.params.id
+      }
+    })
+    res.json(editedMood)
+  } catch (error) {
+    next(error)
+  }
+})

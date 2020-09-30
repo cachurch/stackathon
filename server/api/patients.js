@@ -19,4 +19,25 @@ router.get('/:patientId', async (req, res, next) => {
   }
 })
 
+router.post('/', async (req, res, next) => {
+  try {
+    const newPatient = await Patient.create(req.body)
+    res.json(newPatient)
+  } catch (error) {
+    next(error)
+  }
+})
+
+router.delete('/:patientId', async (req, res, next) => {
+  try {
+    await Patient.destroy({
+      where: {
+        id: req.params.patientId
+      }
+    })
+  } catch (error) {
+    next(error)
+  }
+})
+
 module.exports = router

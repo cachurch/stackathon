@@ -9,6 +9,7 @@ const initialState = {
 //ACTION TYPES
 const GET_PATIENTS = 'GET_PATIENTS'
 const GET_PATIENT = 'GET_PATIENT'
+const ADD_PATIENT = 'ADD_PATIENT'
 
 //ACTION CREATORS
 const getPatients = patients => ({
@@ -21,8 +22,12 @@ const getPatient = patientId => ({
   patientId
 })
 
-//THUNK CREATORS
+const addPatient = patient => ({
+  type: ADD_PATIENT,
+  patient
+})
 
+//THUNK CREATORS
 export const fetchPatients = () => async dispatch => {
   try {
     const {data} = await axios.get('/api/patients')
@@ -44,8 +49,17 @@ export const fetchPatient = patientId => async dispatch => {
   }
 }
 
-//REDUCER
+export const newPatient = patient => async dispatch => {
+  try {
+    const {data} = await axios.post('/api/patients')
+    const action = addPatient(data)
+    dispatch(action)
+  } catch (error) {
+    console.error(error)
+  }
+}
 
+//REDUCER
 export default function(state = initialState, action) {
   switch (action.type) {
     case GET_PATIENTS:
@@ -53,6 +67,9 @@ export default function(state = initialState, action) {
 
     case GET_PATIENT:
       return {...state, patient: action.patientId}
+
+    case ADD_PATIENT:
+      return {...state, patients: [state.patients, action.patient]}
 
     default:
       return state
